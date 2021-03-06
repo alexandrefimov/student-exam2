@@ -1,4 +1,5 @@
 node("jenkins-slave") {
+    cleanWs()
     stage('Upload app Repo') {
         git credentialsId: 'ssh-git-key', url: 'git@github.com:alexandrefimov/student-exam2.git', branch: 'exam'
     }
