@@ -12,5 +12,8 @@ node("jenkins-slave") {
         coverage report
         """
     }
+    stage('Build Jenkins Slave Image') {
+        docker.build('alexanderefimov/exam_images:jenkins_slave')
+    }
 }
 
