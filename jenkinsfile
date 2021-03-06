@@ -1,5 +1,6 @@
 node("jenkins-slave") {
     cleanWs()
+    def app_calc
     stage('Upload app Repo') {
         git credentialsId: 'ssh-git-key', url: 'git@github.com:alexandrefimov/student-exam2.git', branch: 'exam'
     }
@@ -13,7 +14,7 @@ node("jenkins-slave") {
         """
     }
     stage('Build Jenkins Slave Image') {
-        docker.build('alexanderefimov/exam_images:jenkins_slave')
+        app_calc = docker.build('alexanderefimov/exam_images:jenkins_slave')
     }
 }
 
