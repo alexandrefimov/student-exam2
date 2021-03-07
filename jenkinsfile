@@ -16,10 +16,13 @@ node("jenkins-slave") {
     stage('Build Jenkins Slave Image') {
         app_calc = docker.build('alexanderefimov/exam_images:calc_app')
     }
-    stage('Login to DockerHub') {
+    stage('Login to DockerHub and Push Image') {
         docker.withRegistry('', 'dockerhub') {
             app_calc.push()
         }
+    }
+    stage('Remove Image') {
+        sh 'docker rmi 'alexanderefimov/exam_images:calc_app'
     }
 }
 
