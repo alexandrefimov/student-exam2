@@ -14,7 +14,7 @@ node("jenkins-slave") {
         """
     }
     stage('Build Jenkins Slave Image') {
-        app_calc = docker.build("alexanderefimov/exam_images:app_calc_build${env.BUILD_ID}")
+        app_calc = docker.build('alexanderefimov/exam_images:app_calc')
     }
     stage('Login to DockerHub') {
         docker.withRegistry('', 'dockerhub') {
