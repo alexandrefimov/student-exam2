@@ -24,5 +24,6 @@ node("jenkins-slave") {
     stage('Remove Image') {
         sh 'docker rmi alexanderefimov/exam_images:calc_app'
     }
+    cleanWs()
 }
 
